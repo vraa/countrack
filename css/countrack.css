@@ -1,8 +1,36 @@
 .app{
-  font: 1em Georgia;
+  font: 1em Verdana;
   width: 100%;
   max-width: 480px;
   background-color: #fafafa;
   color: #333;
   margin:0 auto;
+  padding: .5em;
 }
+
+  .app > header:first-child{
+    overflow: hidden;
+  }
+  h1.brand{
+    font-size: 1em;
+    margin: 0;
+    text-transform: uppercase;
+    color: purple;
+    float: left;
+  }
+    h1.brand span{
+      opacity: .5;
+      text-transform: lowercase;
+    }
+  nav.main{
+    float: right;
+  }
+    nav.main a{
+      margin: 0 1em;
+      text-decoration: none;
+      font-weight: bold;
+      color: purple;
+    }
+      nav.main a em{
+        font-size: 1.1em;
+      }
