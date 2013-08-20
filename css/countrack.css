@@ -1,0 +1,8 @@
+.app{
+  font: 1em Georgia;
+  width: 100%;
+  max-width: 480px;
+  background-color: #fafafa;
+  color: #333;
+  margin:0 auto;
+}
