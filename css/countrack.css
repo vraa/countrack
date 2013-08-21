@@ -50,7 +50,6 @@
       color: #ecf0f1;
     }
   .io{
-    background-color: #ecf0f1;
     margin: .5em 0;
     padding: .5em;
   }
@@ -59,7 +58,7 @@
     .item-form input[type="text"]{
       font: .9em Georgia !important;
       border: 1px solid #27ae60;
-      border-radius: 5px;
+      border-radius: 2px;
       padding: .2em;
       width: 75%;
     }
@@ -75,3 +74,42 @@
       text-align: center;
       font-weight: bold;
     }
+  .item-list .item{
+    background-color: #ecf0f1;
+    padding: .5em 1em;
+    margin: .5em 0;
+    color: #34495e;
+    border-radius: 2px;
+    text-shadow:0 0 1px #ecf0f1;
+  }
+    .item .data p, .item .count p{
+      margin: 0;
+      font-family: Georgia;
+    }
+    .item .data{
+      float: left;
+      width: 55%;
+      margin-right: .5em;
+    }
+    .item .count{
+      float: left;
+      width: 10%;
+      font-size: 1.2em;
+      color: #34495e;
+    }
+    .item .controls{
+      float: right;
+    }
+      .item .controls a{
+        text-decoration: none;
+      }
+      .item .controls a{
+        background-color: #e67e22;
+        border-bottom: 3px solid #d35400;
+        border-radius: 2px;
+        padding: .2em .5em;
+        color: #ecf0f1;
+        font-weight: bold;
+        font-size: .7em;
+        margin: 0 .1em;
+      }
