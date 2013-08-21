@@ -17,17 +17,31 @@
       <header>
         <h1 class='brand'>countrack<span>.me</span></h1>
 
-        <nav class='main'>
-          <a href="javascript:void(0);" title="Add"> <em>+</em> add </a>
-          <a href="javascript:void(0);" title="Help"> <em>?</em> help </a>
+        <nav class='main container'>
+          <a id="add" href="javascript:void(0);" title="Add"> <em>+</em> add </a>
+          <a id="help" href="javascript:void(0);" title="Help"> <em>?</em> </a>
         </nav>
 
       </header>
 
+      <section class='io container hide'>
+        
+      </section>
+
     </div>
+
+    <!-- TEMPLATES -->
+    <script type="text/template" id="itemForm">
+      <form name="item" class="item-form" >
+        <input type="text" name="item-name" />
+        <button id="save">Save</button>
+      </form>
+    </script>
+    <!-- END TEMPLATES -->
 
     <script src="js/lib/jquery-2.0.3.min.js"></script>
     <script src="js/lib/underscore-min.js"></script>
+    <script src="js/countrack.js"></script>
 
   </body>
 </html>

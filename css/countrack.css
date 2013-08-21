@@ -1,8 +1,20 @@
+.container:before,
+.container:after {
+    content:"";
+    display:table;
+}
+.container:after {
+    clear:both;
+}
+
+.hide{
+  display: none;
+}
+
 .app{
-  font: 1em Verdana;
-  width: 100%;
-  max-width: 480px;
-  background-color: #fafafa;
+  font: .9em Verdana;
+  width: 95%;
+  max-width: 400px;
   color: #333;
   margin:0 auto;
   padding: .5em;
@@ -10,6 +22,7 @@
 
   .app > header:first-child{
     overflow: hidden;
+    padding: .5em;
   }
   h1.brand{
     font-size: 1em;
@@ -26,11 +39,39 @@
     float: right;
   }
     nav.main a{
-      margin: 0 1em;
+      margin: 0.5em;
       text-decoration: none;
       font-weight: bold;
       color: purple;
+      background-color:#9b59b6; 
+      border-bottom: 3px solid #8e44ad;
+      border-radius: 2px;
+      padding: 0 .5em;
+      color: #ecf0f1;
     }
-      nav.main a em{
-        font-size: 1.1em;
-      }
+  .io{
+    background-color: #ecf0f1;
+    margin: .5em 0;
+    padding: .5em;
+  }
+  .item-form{
+  }
+    .item-form input[type="text"]{
+      font: .9em Georgia !important;
+      border: 1px solid #27ae60;
+      border-radius: 5px;
+      padding: .2em;
+      width: 75%;
+    }
+    .item-form button{
+      background-color: #1abc9c;
+      color: #ecf0f1;
+      border: none; 
+      border-bottom: 3px solid #27ae60;
+      border-radius: 2px;
+      padding: .2em 1em;
+      font: .9em Georgia !important;
+      width: 20%;
+      text-align: center;
+      font-weight: bold;
+    }
