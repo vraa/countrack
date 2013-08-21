@@ -19,7 +19,7 @@
     }
 
     function Item(itemName){
-      this.id = guid();
+      this.id = PREFIX + guid();
       this.name = $.trim(itemName) === "" ? "Name" : itemName;
       this.count = 0;
       this.activity = [];
@@ -33,7 +33,7 @@
     }
 
     function writeItem(item){
-      localStorage.setItem(PREFIX + item.id, JSON.stringify(item));
+      localStorage.setItem(item.id, JSON.stringify(item));
     }
 
     function readItems(){
@@ -54,6 +54,7 @@
       $('#add').click(addItem);
       $('#help').click(showHelp);
       $('.app').on('click', '#save', saveItem);
+      $('.app').on('click', '.plusOne', plusOne);
     };
 
     function addItem(){
@@ -70,6 +71,20 @@
         renderItems();
       }
       $('.io').empty().hide();
+    }
+
+    function findItem(id){
+      return _.find(itemList, function(item){
+        return item.id === id;
+      });
+    }
+
+    function plusOne(evt){
+      var itemElm = $(evt.target).closest('article');
+      var item = findItem(itemElm.attr('id'));
+      item.count = item.count + 1;
+      localStorage.setItem(item.id, JSON.stringify(item));
+      renderItems();
     }
 
     function showHelp(){

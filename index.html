@@ -46,7 +46,7 @@
 
       <%
         _.each(items, function(item, key, list){
-      %>
+      %>  
 
         <article id="<%= item.id %>" class='item container'>
             
@@ -60,8 +60,7 @@
 
           <div class="controls">
             <span class='incrementers'>
-              <a href="javascript:void(0);">+1</a>
-              <a href="javascript:void(0);">+2</a>
+              <a class='plusOne' href="javascript:void(0);">+1</a>
             </span>
             <a class="edit" href="javascript:void(0);">*</a>
           </div>
