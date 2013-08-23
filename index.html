@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>countrack.me</title>
     <meta name="description" content="Countrack helps you to track counts of any activity that you want." />
@@ -14,7 +15,7 @@
 
     <div class="app">
       
-      <header>
+      <header class='container'>
         <h1 class='brand'>countrack<span>.me</span></h1>
 
         <nav class='main container'>
@@ -37,7 +38,7 @@
     <!-- TEMPLATES -->
     <script type="text/template" id="itemForm">
       <form class="item-form" >
-        <input type="text" name="item-name" />
+        <input type="text" placeholder="Enter a name (e.g. Drink Water)" name="item-name" />
         <button id="save">Save</button>
       </form>
     </script>
@@ -62,13 +63,46 @@
             <span class='incrementers'>
               <a class='plusOne' href="javascript:void(0);">+1</a>
             </span>
-            <a class="edit" href="javascript:void(0);">*</a>
+            <a class="more" href="javascript:void(0);">...</a>
+          </div>
+
+          <div class='more-wrapper hide'>
+            More
           </div>
 
         </article>
       <%
       });
       %>
+
+    </script>
+
+    <script type="text/template" id="moreGraphTemplate">
+
+      <div class='graph'>
+        <label>Last 30 days Smmary</label>
+      <%
+        for(var i=0; i < plotPoints.length;){
+      %>
+          <div class='row'>
+      <%
+          for(var j = 0; j < 15; j+=1, i+= 1){
+            var plotPoint = plotPoints[i];
+      %>
+          <span class='cell <%= plotPoint.cssClass %> <%= plotPoint.date %>'/>
+      <%
+          }
+      %>
+          </div>
+      <%
+        }
+      %>
+      </div>
+    </script>
+
+    <script type="text/template" id="miniGraphTemplate">
+
+
 
     </script>
     <!-- END TEMPLATES -->

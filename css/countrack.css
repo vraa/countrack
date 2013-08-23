@@ -6,7 +6,6 @@
 .container:after {
     clear:both;
 }
-
 .hide{
   display: none;
 }
@@ -56,7 +55,7 @@
   .item-form{
   }
     .item-form input[type="text"]{
-      font: .9em Georgia !important;
+      font: 1.2em Tahoma !important;
       border: 1px solid #27ae60;
       border-radius: 2px;
       padding: .2em;
@@ -81,10 +80,11 @@
     color: #34495e;
     border-radius: 2px;
     text-shadow:0 0 1px #ecf0f1;
+    font-size: 1.5em;
   }
     .item .data p, .item .count p{
       margin: 0;
-      font-family: Georgia;
+      font-family: Tahoma;
     }
     .item .data{
       float: left;
@@ -113,3 +113,43 @@
         font-size: .7em;
         margin: 0 .1em;
       }
+    .item .graph{
+      clear: both;
+      font-size: 1rem;
+      text-align: center;
+    }
+    .graph .row{
+      clear: both;
+      padding: 0;
+      margin: 0;
+    }
+    .graph label{
+      font-size: .5em;
+      text-transform: uppercase;
+      color: #bbb;
+      display: block;
+      padding:1em 0;
+    }
+    .graph .cell{
+      display: inline-block;
+      background-color: #fafafa;
+      height: 10px;
+      width: 10px;
+      border-radius: 2px;
+    }
+    .cell.empty{
+      background-color: #fff;
+      opacity: .5;
+    }
+    .cell.low{
+      background-color: #d6e685;
+    }
+    .cell.medium{
+      background-color: #8cc665;
+    }
+    .cell.high{
+      background-color: #44a340;
+    }
+    .cell.insane{
+      background-color: #1e6823;
+    }
