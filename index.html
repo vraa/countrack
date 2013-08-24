@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,10 +8,11 @@
     <title>countrack.me</title>
     <meta name="description" content="Countrack helps you to track counts of any activity that you want." />
 
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="css/cssnormalize-min.css" />
     <link rel="stylesheet" type="text/css" href="css/countrack.css" />
-
   </head>
+
   <body>
 
     <div class="app">
@@ -19,97 +21,30 @@
         <h1 class='brand'>countrack<span>.me</span></h1>
 
         <nav class='main container'>
-          <a id="add" href="javascript:void(0);" title="Add"> &#10010; add </a>
-          <a id="help" href="javascript:void(0);" title="Help"> ? </a>
+          <!--
+          <a class="button-purple" id="settings" href="javascript:void(0);" title="Settings">*</a>
+          <a class="button-purple" id="help" href="javascript:void(0);" title="Help">?</a>
+        -->
         </nav>
 
       </header>
 
-      <section class='io container hide'>
-        
+      <section class='io action-mode container'>
+        <a class="button-green" href="javascript:void(0);" id="addActivity"> <em>+</em> Add an activity to track</a>
+        <form>
+          <input type="text" placeholder="Activity name (e.g. Drink Water)" name="activityName" />
+          <a href="javascript:void(0);" class="button-green" id="saveActivity">Save</a>
+          <a href="javascript:void(0);" class="button-grey" id="cancelActivity">X</a>
+        </form>
       </section>
 
-      <section class='item-list container'>
+      <section class='activity-list container'>
         
       </section>
 
     </div>
 
-    <!-- TEMPLATES -->
-    <script type="text/template" id="itemForm">
-      <form class="item-form" >
-        <input type="text" placeholder="Enter a name (e.g. Drink Water)" name="item-name" />
-        <button id="save">Save</button>
-      </form>
-    </script>
-
-    <script type="text/template" id="itemListTemplate">
-
-      <%
-        _.each(items, function(item, key, list){
-      %>  
-
-        <article id="<%= item.id %>" class='item container'>
-            
-          <div class="data">
-            <p class="name"><%= item.name %></p>
-          </div>
-
-          <div class="count">
-            <p><%= item.count %></p>
-          </div>
-
-          <div class="controls">
-            <span class='incrementers'>
-              <a class='plusOne' href="javascript:void(0);">+1</a>
-            </span>
-            <a class="more" href="javascript:void(0);">...</a>
-          </div>
-
-          <div class='more-wrapper hide'>
-            More
-          </div>
-
-        </article>
-      <%
-      });
-      %>
-
-    </script>
-
-    <script type="text/template" id="moreGraphTemplate">
-
-      <div class='graph'>
-        <label>Last 30 days Smmary</label>
-      <%
-        for(var i=0; i < plotPoints.length;){
-      %>
-          <div class='row'>
-      <%
-          for(var j = 0; j < 15; j+=1, i+= 1){
-            var plotPoint = plotPoints[i];
-      %>
-          <span class='cell <%= plotPoint.cssClass %> <%= plotPoint.date %>'/>
-      <%
-          }
-      %>
-          </div>
-      <%
-        }
-      %>
-      </div>
-    </script>
-
-    <script type="text/template" id="miniGraphTemplate">
-
-
-
-    </script>
-    <!-- END TEMPLATES -->
-
-    <script src="js/lib/jquery-2.0.3.min.js"></script>
-    <script src="js/lib/underscore-min.js"></script>
-    <script src="js/countrack.js"></script>
+    <script src="js/require.js" data-main="js/main"></script>
 
   </body>
 </html>

@@ -10,8 +10,41 @@
   display: none;
 }
 
+a[class*='button-']{
+  text-decoration: none;
+  font-weight: bold;
+  background-color:#ecf0f1; 
+  border-bottom: 3px solid #bdc3c7;
+  border-radius: 2px;
+  padding: .2em .5em;
+  color: #fff;
+  text-shadow:0 0 2px #888;
+
+  -webkit-transition: opacity .5s;
+  -moz-transition: opacity .5s;
+  transition : opacity .5s;
+}
+  a.button-green{
+    background-color: #1abc9c;
+    border-color: #27ae60;
+  }
+  a.button-purple{
+    background-color: #9b59b6;
+    border-color: #8e44ad;
+  }
+  a.button-orange{
+    background-color: #e67e22;
+    border-color: #d35400;
+  }
+  a[class*='button-']:hover, a[class*='button-']:focus{
+    opacity: .5;
+  }
+em{
+  font-style: normal;
+}
+
 .app{
-  font: .9em Verdana;
+  font: .9em Tahoma;
   width: 95%;
   max-width: 400px;
   color: #333;
@@ -37,43 +70,37 @@
   nav.main{
     float: right;
   }
-    nav.main a{
-      margin: 0.5em;
-      text-decoration: none;
-      font-weight: bold;
-      color: purple;
-      background-color:#9b59b6; 
-      border-bottom: 3px solid #8e44ad;
-      border-radius: 2px;
-      padding: 0 .5em;
-      color: #ecf0f1;
-    }
+   
   .io{
-    margin: .5em 0;
-    padding: .5em;
+    margin: 1em 0;
   }
-  .item-form{
-  }
-    .item-form input[type="text"]{
-      font: 1.2em Tahoma !important;
+    .io #addActivity{
+    }
+    .io.action-mode form{
+      display: none;
+    }
+    .io.form-mode #addActivity{
+      display: none;
+    }
+    .io a#addActivity{
+      display: block;
+      text-align: center;
+      padding: .5em;
+    }
+    .io form input[type="text"]{
       border: 1px solid #27ae60;
       border-radius: 2px;
       padding: .2em;
       width: 75%;
     }
-    .item-form button{
-      background-color: #1abc9c;
-      color: #ecf0f1;
-      border: none; 
-      border-bottom: 3px solid #27ae60;
-      border-radius: 2px;
-      padding: .2em 1em;
-      font: .9em Georgia !important;
-      width: 20%;
-      text-align: center;
-      font-weight: bold;
-    }
-  .item-list .item{
+      .io form a[class*='button-']{
+        margin: 0 .1em;
+      }
+      .io form a[class*='button-']:last-child{
+        margin-right: 0;
+      }
+
+  .activity-list .activity{
     background-color: #ecf0f1;
     padding: .5em 1em;
     margin: .5em 0;
@@ -82,42 +109,37 @@
     text-shadow:0 0 1px #ecf0f1;
     font-size: 1.5em;
   }
-    .item .data p, .item .count p{
+    .activity .data p, .activity .count p{
       margin: 0;
       font-family: Tahoma;
     }
-    .item .data{
+    .activity .data{
       float: left;
       width: 55%;
       margin-right: .5em;
     }
-    .item .count{
+    .activity .count{
       float: left;
       width: 10%;
       font-size: 1.2em;
       color: #34495e;
     }
-    .item .controls{
+    .activity .controls{
       float: right;
     }
-      .item .controls a{
+      .activity .controls a{
         text-decoration: none;
       }
-      .item .controls a{
-        background-color: #e67e22;
-        border-bottom: 3px solid #d35400;
-        border-radius: 2px;
-        padding: .2em .5em;
-        color: #ecf0f1;
-        font-weight: bold;
-        font-size: .7em;
-        margin: 0 .1em;
-      }
-    .item .graph{
+
+    .activity .graph{
       clear: both;
       font-size: 1rem;
       text-align: center;
+      display: none;
     }
+      .activity.expanded .graph{
+        display: block;
+      }
     .graph .row{
       clear: both;
       padding: 0;
@@ -152,4 +174,8 @@
     }
     .cell.insane{
       background-color: #1e6823;
+    }
+    .graph .buttons{
+      margin:2em 0 .5em 0;
+      font-size: .7em;
     }

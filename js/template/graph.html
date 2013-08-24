@@ -1,0 +1,22 @@
+<div class='graph'>
+  <label>Last 30 days</label>
+<%
+  for(var i=0; i < plotPoints.length;){
+%>
+    <div class='row'>
+<%
+    for(var j = 0; j < 15; j+=1, i+= 1){
+      var plotPoint = plotPoints[i];
+%>
+    <span class='cell <%= plotPoint.cssClass %> <%= plotPoint.date %>'/>
+<%
+    }
+%>
+    </div>
+<%
+  }
+%>
+<div class="buttons">
+  <a class="button-orange delete" href="javascript:void(0);">Delete</a>
+</div>
+</div>
