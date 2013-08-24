@@ -5,7 +5,7 @@ define([
   , 'model/activities'
   , 'model/activity'
   , 'model/record'
-  , 'view/Activity'
+  , 'view/activity'
   , 'constants'
 ], function(
     _
