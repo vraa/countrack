@@ -46,7 +46,13 @@ define([
     },
 
     getDayCount : function(){
-      return 50;
+      return this.get('records').filter(function(record){
+        var d1 = parseInt(_.stripTime(record.get('date')).replace(/-/g, ''), 10);
+        var d2 = parseInt(_.stripTime(new Date()).replace(/-/g, ''), 10);
+        return d1 === d2;
+      }).reduce(function(memo, record){
+        return memo + record.get('count');
+      }, 0);
     },
 
     toTemplateJSON : function(){

@@ -115,15 +115,45 @@ em{
     }
     .activity .data{
       float: left;
-      width: 55%;
+      width: 50%;
       margin-right: .5em;
+      color: #800080;
     }
     .activity .count{
       float: left;
-      width: 10%;
+      width: 25%;
       font-size: 1.2em;
       color: #34495e;
     }
+       .activity .count p{
+        padding: 0;
+        margin: 0;
+       }
+      .activity .count p.today{
+        float: left;
+        width: 45%;
+        color: #800080;
+        text-align: right;
+      }
+      .activity .count p.total{
+        float: right;
+        width: 45%;
+        color: #CE9DCE;
+        text-align: left;
+        font-size: .8em;
+        border-left: 1px solid #CE9DCE;
+        padding-left: .2em;
+      }
+        .activity .count .total em{
+          font-size: .8em;
+        }
+        .activity .count label{
+          font-size: .4em;
+          margin: 0;
+          padding: 0;
+          display: block;
+          text-transform: uppercase;
+        }
     .activity .controls{
       float: right;
     }

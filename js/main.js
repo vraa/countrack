@@ -41,6 +41,7 @@ require(['underscore'], function(_){
     },
 
     stripTime : function(date){
+      if(typeof date === 'string') date = new Date(date);
       return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
     }
 
