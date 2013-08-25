@@ -36,7 +36,7 @@ define([
 
       this.listenTo(this.activities, 'add', this.addOneActivity);
       this.listenTo(this.activities, 'unpersist', this.removeActivity);
-      // this.writeTestDate();
+      //this.writeTestDate();
       this.loadActivities();
     },
 
@@ -44,7 +44,10 @@ define([
     writeTestDate : function(){
       for(var i=1; i<=5; i+=1){
         var activity = new Activity();
-        activity.get('records').add(new Record()).add(new Record());
+        var record = new Record();
+        record.set('date', _.subtractDays(new Date(), i));
+        record.set('count', i);
+        activity.get('records').add(record);;
         localStorage.setItem(activity.id, JSON.stringify(activity));
       }
     },
