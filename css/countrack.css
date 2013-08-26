@@ -20,9 +20,9 @@ a[class*='button-']{
   color: #fff;
   text-shadow:0 0 2px #888;
 
-  -webkit-transition: opacity .5s;
-  -moz-transition: opacity .5s;
-  transition : opacity .5s;
+  -webkit-transition: text-shadow .3s;
+  -moz-transition: text-shadow .3s;
+  transition : text-shadow .3s;
 }
   a.button-green{
     background-color: #1abc9c;
@@ -37,7 +37,7 @@ a[class*='button-']{
     border-color: #d35400;
   }
   a[class*='button-']:hover{
-    opacity: .5;
+    text-shadow:0 0 10px #fff;
   }
 em{
   font-style: normal;
@@ -110,7 +110,7 @@ em{
     margin: .5em 0;
     color: #34495e;
     border-radius: 2px;
-    border:1px solid #dadada;
+    border:1px solid #eee;
     text-shadow:0 0 1px #ecf0f1;
     font-size: 1.5em;
   }
@@ -179,13 +179,9 @@ em{
 
     .activity .graph{
       clear: both;
-      font-size: .61rem;
+      font-size: .21rem;
       text-align: center;
-    }
-    .graph label{
-      color: #cacaca;
-      text-transform: uppercase;
-      font-size: .5rem;
+      opacity: .8;
     }
     .graph .cell{
       display: inline-block;
@@ -226,8 +222,20 @@ em{
         background-color: #C0382B;
       }
 .intro{
-  color: #333;
-  text-align: center;
+  color: purple;
+  background: #fff url(../img/goldengate.png) no-repeat -150px -200px;
+  height: 340px;
+  padding: 1em;
+  text-shadow:0 0 10px #fff;
 }
   .intro h2{
   }
+  .intro .highlights{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding: .2em;
+  }
+    .highlights li{
+      margin: 1em 0;
+    }

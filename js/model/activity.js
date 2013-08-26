@@ -16,7 +16,6 @@ define([
 
     defaults : {
       'name' : 'Activity name',
-      'order' : 1,
       'nature' : 'good'
     },
 

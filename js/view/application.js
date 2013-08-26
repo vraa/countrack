@@ -7,6 +7,7 @@ define([
   , 'model/record'
   , 'view/activity'
   , 'text!template/intro.html'
+  , 'model/sample'
   , 'constants'
 ], function(
     _
@@ -17,6 +18,7 @@ define([
   , Record
   , ActivityView
   , IntroTemplate
+  , SampleActivities
   , CONST
 ){
 
@@ -28,9 +30,10 @@ define([
 
     events : {
       'keydown [name="activityName"]' : 'saveOnEnter',
-      'click #addActivity' : 'showActivityForm',
+      'click #addActivity, #introAddActivity' : 'showActivityForm',
       'click #saveActivity' : 'saveActivityForm',
-      'click #cancelActivity' : 'hideActivityForm'
+      'click #cancelActivity' : 'hideActivityForm',
+      'click #loadSample' : 'loadSample'
     },
 
     initialize : function(){
@@ -46,27 +49,28 @@ define([
       this.addAllActivity();
       this.$info.html('');
       
-      /* TODO add intro
       if(this.activities.length === 0){
         this.$activityList.html(IntroTemplate);
       }
-      */
 
     },
 
 
-    writeTestDate : function(){
-      for(var i=1; i<=5; i+=1){
-        var activity = new Activity();
-        activity.set('nature', i % 2 === 0 ? CONST.GOOD : CONST.BAD);
-        for(var j=1; j <=10; j++){
+    // this method writes sample activities to local storage.
+    writeSampleDate : function(){
+      _.each(SampleActivities, function(sample){
+        var activity = new Activity({
+          name : sample.name,
+          nature : sample.nature
+        });
+        for(var j=1; j <=20; j++){
           var record = new Record();
           record.set('date', _.subtractDays(new Date(), _.random(1,25)));
           record.set('count', _.random(0,10));
           activity.get('records').add(record);
         }
         localStorage.setItem(activity.id, JSON.stringify(activity));
-      }
+      }, this);
     },
 
     /* this method loads the activity data from localstorage. 
@@ -84,6 +88,13 @@ define([
           this.activities.add(activity, {silent : true});
         }
       }
+    },
+
+    // this method fills the app with sample activities.
+    loadSample : function(){
+      this.$activityList.empty();
+      this.writeSampleDate();
+      this.initialize();
     },
 
     removeActivity : function(activity){
@@ -111,6 +122,9 @@ define([
 
      // this method replaces the add activity button with the form.
     showActivityForm : function(){
+      if(this.activities.length === 0){
+        this.$activityList.html('');
+      }
       this.$io.removeClass('action-mode').addClass('form-mode').find('[type="text"]').focus();
     },
 
@@ -132,6 +146,9 @@ define([
 
     /* this method toggles to action mode.*/
     hideActivityForm : function(){
+      if(this.activities.length === 0){
+        this.$activityList.html(IntroTemplate);
+      }
       this.$io.removeClass('form-mode').addClass('action-mode');
     }
 
