@@ -39,6 +39,7 @@ define([
       this.listenTo(this.activities, 'unpersist', this.removeActivity);
       //this.writeTestDate();
       this.loadActivities();
+      this.addAllActivity();
     },
 
 
@@ -63,9 +64,9 @@ define([
           var obj = JSON.parse(localStorage.getItem(key));
           var activity = new Activity(obj);
           _.each(obj.records, function(record){
-            activity.get('records').add(new Record(record));
+            activity.get('records').add(new Record(record), {silent : true});
           });
-          this.activities.add(activity);
+          this.activities.add(activity, {silent : true});
         }
       }
     },
@@ -80,7 +81,7 @@ define([
     },
 
     addAllActivity : function(){
-
+      this.activities.each(this.addOneActivity, this);
     },
 
     //  this method listens to activity name textbox and saves the activity

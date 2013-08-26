@@ -48,6 +48,7 @@ define([
       evt.stopImmediatePropagation();
       var record = new Record();
       this.model.get('records').add(record);
+      this.model.set('updated', new Date());
       this.model.trigger('change');
     },
 
