@@ -36,7 +36,7 @@ a[class*='button-']{
     background-color: #e67e22;
     border-color: #d35400;
   }
-  a[class*='button-']:hover, a[class*='button-']:focus{
+  a[class*='button-']:hover{
     opacity: .5;
   }
 em{
@@ -209,3 +209,9 @@ em{
       margin:2em 0 .5em 0;
       font-size: .7em;
     }
+.intro{
+  color: #333;
+  text-align: center;
+}
+  .intro h2{
+  }

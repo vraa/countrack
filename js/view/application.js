@@ -6,6 +6,7 @@ define([
   , 'model/activity'
   , 'model/record'
   , 'view/activity'
+  , 'text!template/intro.html'
   , 'constants'
 ], function(
     _
@@ -15,6 +16,7 @@ define([
   , Activity
   , Record
   , ActivityView
+  , IntroTemplate
   , CONST
 ){
 
@@ -34,12 +36,22 @@ define([
     initialize : function(){
       this.$io = this.$el.find('.io'); 
       this.$activityList = this.$el.find('.activity-list');
+      this.$info = this.$el.find('.info');
 
       this.listenTo(this.activities, 'add', this.addOneActivity);
       this.listenTo(this.activities, 'unpersist', this.removeActivity);
-      //this.writeTestDate();
+      
+      this.$info.html('Loading ...');
       this.loadActivities();
       this.addAllActivity();
+      this.$info.html('');
+      
+      /* TODO add intro
+      if(this.activities.length === 0){
+        this.$activityList.html(IntroTemplate);
+      }
+      */
+
     },
 
 
