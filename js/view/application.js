@@ -58,10 +58,13 @@ define([
     writeTestDate : function(){
       for(var i=1; i<=5; i+=1){
         var activity = new Activity();
-        var record = new Record();
-        record.set('date', _.subtractDays(new Date(), i));
-        record.set('count', i);
-        activity.get('records').add(record);;
+        activity.set('nature', i % 2 === 0 ? CONST.GOOD : CONST.BAD);
+        for(var j=1; j <=10; j++){
+          var record = new Record();
+          record.set('date', _.subtractDays(new Date(), _.random(1,25)));
+          record.set('count', _.random(0,10));
+          activity.get('records').add(record);
+        }
         localStorage.setItem(activity.id, JSON.stringify(activity));
       }
     },
@@ -89,7 +92,7 @@ define([
 
     addOneActivity : function(activity){
       var view = new ActivityView({model : activity});
-      this.$activityList.append(view.render().$el);
+      this.$activityList.prepend(view.render().$el);
     },
 
     addAllActivity : function(){
@@ -115,9 +118,11 @@ define([
     saveActivityForm : function(){
       var name = this.$io.find('[name="activityName"]').val();
       if($.trim(name) !== ''){
+        var nature = this.$io.find('[name="nature"]').is(':checked') ? CONST.GOOD : CONST.BAD;
         this.$io.find('[name="activityName"]').val('');
         var activity = new Activity({
-          name : name
+          name : name,
+          nature : nature
         });
         this.activities.add(activity);
         activity.persist();

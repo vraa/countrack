@@ -38,6 +38,7 @@ define([
     render : function(){
       this.$el.html(this.template(this.model.toTemplateJSON()));
       this.$el.attr('id', this.model.id);
+      this.$el.addClass(this.model.get('nature'));
       this.$el.find('.graph').html(this.graphTemplate({plotPoints : this.model.plotPoints()}));
       this.$el.find('.more').html(MoreTemplate);
       return this;

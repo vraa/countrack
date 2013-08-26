@@ -91,13 +91,17 @@ em{
       border: 1px solid #27ae60;
       border-radius: 2px;
       padding: .2em;
-      width: 75%;
+      width: 60%;
     }
       .io form a[class*='button-']{
         margin: 0 .1em;
       }
       .io form a[class*='button-']:last-child{
         margin-right: 0;
+      }
+      .io form label[for="nature"]{
+        font-size: .8rem;
+        margin: 0 .5em;
       }
 
   .activity-list .activity{
@@ -106,6 +110,7 @@ em{
     margin: .5em 0;
     color: #34495e;
     border-radius: 2px;
+    border:1px solid #dadada;
     text-shadow:0 0 1px #ecf0f1;
     font-size: 1.5em;
   }
@@ -178,7 +183,7 @@ em{
       text-align: center;
     }
     .graph label{
-      color: #ccc;
+      color: #cacaca;
       text-transform: uppercase;
       font-size: .5rem;
     }
@@ -196,18 +201,30 @@ em{
       background-color: #fafafa;
       opacity: .8;
     }
-    .cell.low{
-      background-color: #d6e685;
-    }
-    .cell.medium{
-      background-color: #8cc665;
-    }
-    .cell.high{
-      background-color: #44a340;
-    }
-    .cell.insane{
-      background-color: #1e6823;
-    }
+      .good .cell.low{
+        background-color: #d6e685;
+      }
+      .good .cell.medium{
+        background-color: #8cc665;
+      }
+      .good .cell.high{
+        background-color: #44a340;
+      }
+      .good .cell.insane{
+        background-color: #1e6823;
+      }
+      .bad .cell.low{
+        background-color: #EDB5B0;
+      }
+      .bad .cell.medium{
+        background-color: #DF7B71;
+      }
+      .bad .cell.high{
+        background-color: #DA685C;
+      }
+      .bad .cell.insane{
+        background-color: #C0382B;
+      }
 .intro{
   color: #333;
   text-align: center;

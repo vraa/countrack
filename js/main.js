@@ -49,6 +49,11 @@ require(['underscore'], function(_){
     // If given date is undefined, then it returns today's date.
     dateOrToday : function(date){
       return date ? new Date(date) : new Date();
+    },
+
+    // generates a random number between given numbers.
+    random : function(min, max){
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
   });
