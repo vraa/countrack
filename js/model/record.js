@@ -14,7 +14,7 @@ define([
     },
 
     initialize : function(){
-      this.set('date', new Date(this.get('date')) || new Date());
+      this.set('date', _.dateOrToday(this.get('date')));
     }
   });
 

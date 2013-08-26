@@ -40,9 +40,15 @@ require(['underscore'], function(_){
       return new Date(date.getFullYear() , date.getMonth(), date.getDate() - days);
     },
 
+    // this method strip out time(zone) info from date.
     stripTime : function(date){
-      if(typeof date === 'string') date = new Date(date);
       return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
+    },
+
+    // this method creates a new date object from passed string.
+    // If given date is undefined, then it returns today's date.
+    dateOrToday : function(date){
+      return date ? new Date(date) : new Date();
     }
 
   });

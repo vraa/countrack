@@ -23,8 +23,8 @@ define([
       this.set({
         'id' : this.id || CONST.KEY_PREFIX + _.guid(),
         'records' : new Records(),
-        'created' : new Date(this.get('created')) || new Date(),
-        'updated' : new Date(this.get('updated')) || new Date()
+        'created' : _.dateOrToday(this.get('created')),
+        'updated' : _.dateOrToday(this.get('updated'))
       });
       this.on('change', this.persist, this);
       this.on('unpersist', this.unpersist, this);
