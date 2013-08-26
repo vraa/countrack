@@ -25,6 +25,7 @@ define([
     activities : new Activities(),
 
     events : {
+      'keydown [name="activityName"]' : 'saveOnEnter',
       'click #addActivity' : 'showActivityForm',
       'click #saveActivity' : 'saveActivityForm',
       'click #cancelActivity' : 'hideActivityForm'
@@ -82,7 +83,17 @@ define([
 
     },
 
-    /* this method replaces the add activity button with the form.*/
+    //  this method listens to activity name textbox and saves the activity
+    //  when 'Enter' ley is pressed.
+    saveOnEnter : function(evt){
+      if(evt.which === 13){
+        evt.preventDefault();
+        this.saveActivityForm();
+        return false;
+      }
+    },
+
+     // this method replaces the add activity button with the form.
     showActivityForm : function(){
       this.$io.removeClass('action-mode').addClass('form-mode').find('[type="text"]').focus();
     },
