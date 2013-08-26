@@ -4,6 +4,7 @@ define([
   , 'backbone'
   , 'text!template/activity.html'
   , 'text!template/graph.html'
+  , 'text!template/activity-more.html'
   , 'model/record'
 ], function(
   $
@@ -11,6 +12,7 @@ define([
   , Backbone
   , ActivityTemplate
   , GraphTemplate
+  , MoreTemplate
   , Record
 ){
 
@@ -36,7 +38,8 @@ define([
     render : function(){
       this.$el.html(this.template(this.model.toTemplateJSON()));
       this.$el.attr('id', this.model.id);
-      this.$el.find('.graph-wrapper').html(this.graphTemplate({plotPoints : this.model.plotPoints()}));
+      this.$el.find('.graph').html(this.graphTemplate({plotPoints : this.model.plotPoints()}));
+      this.$el.find('.more').html(MoreTemplate);
       return this;
     },
 

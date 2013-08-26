@@ -102,7 +102,7 @@ em{
 
   .activity-list .activity{
     background-color: #ecf0f1;
-    padding: .5em 1em;
+    padding: .5em .4em;
     margin: .5em 0;
     color: #34495e;
     border-radius: 2px;
@@ -160,38 +160,41 @@ em{
       .activity .controls a{
         text-decoration: none;
       }
+    .activity .more{
+      display: none;
+      text-align: center;
+    }
+      .activity.expanded .more{
+        display: block;
+      }
+      .more .buttons{
+      margin:2em 0 .5em 0;
+      font-size: .7em;
+    }
 
     .activity .graph{
       clear: both;
-      font-size: 1rem;
+      font-size: .61rem;
       text-align: center;
-      display: none;
-    }
-      .activity.expanded .graph{
-        display: block;
-      }
-    .graph .row{
-      clear: both;
-      padding: 0;
-      margin: 0;
     }
     .graph label{
-      font-size: .5em;
+      color: #ccc;
       text-transform: uppercase;
-      color: #bbb;
-      display: block;
-      padding:1em 0;
+      font-size: .5rem;
     }
     .graph .cell{
       display: inline-block;
       background-color: #fafafa;
-      height: 10px;
-      width: 10px;
+      height: 8px;
+      width: 8px;
       border-radius: 2px;
+      padding: 0;
+      margin: 0;
+      letter-spacing: 0;
     }
     .cell.empty{
-      background-color: #fff;
-      opacity: .5;
+      background-color: #fafafa;
+      opacity: .8;
     }
     .cell.low{
       background-color: #d6e685;
@@ -204,10 +207,6 @@ em{
     }
     .cell.insane{
       background-color: #1e6823;
-    }
-    .graph .buttons{
-      margin:2em 0 .5em 0;
-      font-size: .7em;
     }
 .intro{
   color: #333;
