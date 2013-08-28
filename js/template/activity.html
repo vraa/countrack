@@ -1,5 +1,6 @@
 <section class='row container'>
-  <div class="data">
+  <div class="data <%= typeof(icon) != 'undefined' && $.trim(icon) !== '' ? 'iconed' : '' %>">
+    <i class="<%= typeof(icon) != 'undefined' && $.trim(icon) !== '' ? 'icon-' + icon : '' %>"></i>
     <p class="name"><%= name %></p>
   </div>
 

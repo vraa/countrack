@@ -10,6 +10,7 @@
 
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="css/cssnormalize-min.css" />
+    <link rel="stylesheet" type="text/css" href="css/fontello-embedded.css" />
     <link rel="stylesheet" type="text/css" href="css/countrack.css" />
   </head>
 
@@ -19,23 +20,38 @@
       
       <header class='container'>
         <h1 class='brand'>countrack<span>.me</span></h1>
-
-        <nav class='main container'>
-          <!--
-          <a class="button-purple" id="settings" href="javascript:void(0);" title="Settings">*</a>
-          <a class="button-purple" id="help" href="javascript:void(0);" title="Help">?</a>
-        -->
-        </nav>
-
+        <a href="javascript:void(0);" class="menu-icon button-purple"><i class='icon-menu'></i></a>
       </header>
 
       <section class='io action-mode container'>
         <a class="button-purple" href="javascript:void(0);" id="addActivity"> <em>+</em> Add new activity to track</a>
         <form>
-          <input type="text" placeholder="Name (e.g. Workout)" name="activityName" />
-          <label for="nature"><input type="checkbox" checked="checked" id="nature" name="nature"> Good </label>
-          <a href="javascript:void(0);" class="button-green" id="saveActivity">&#10004;</a>
-          <a href="javascript:void(0);" class="button-grey" id="cancelActivity">&#10008;</a>
+          <section class='row'>
+            <input type="text" placeholder="Name (e.g. Workout)" name="activityName" />
+            <label for="nature"><input type="checkbox" checked="checked" id="nature" name="nature"> Good </label>
+          </section>
+          <section class='row'>
+            <div class="icons">
+                <i class='icon-music' title='Music'></i>
+                <i class='icon-flight' title='Flight'></i>
+                <i class='icon-coffee' title='Coffee'></i>
+                <i class='icon-food' title='Food'></i>
+                <i class='icon-beer' title='Beer'></i>
+                <i class='icon-moon' title='Moon'></i>
+                <i class='icon-glass' title='Glass'></i>
+                <i class='icon-video' title='Video'></i>
+                <i class='icon-briefcase' title='Briefcase'></i>
+                <i class='icon-book' title='Book'></i>
+                <i class='icon-camera' title='Camera'></i>
+                <i class='icon-clock' title='Clock'></i>
+                <i class='icon-credit-card' title='Credit card'></i>
+            </div>
+            <div class="row actions">
+              <a href="javascript:void(0);" class="button-purple" id="saveActivity">&#10004; Save</a>
+              <a href="javascript:void(0);" class="button-grey" id="cancelActivity">&#10008; Cancel</a>
+            </div>
+          </section>
+
         </form>
       </section>
 

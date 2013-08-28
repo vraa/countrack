@@ -19,7 +19,6 @@ require.config({
   }
 });
 
-/* Mixin util method to _ that generate GUID */
 
 require(['underscore'], function(_){
   _.mixin({
@@ -54,6 +53,21 @@ require(['underscore'], function(_){
     // generates a random number between given numbers.
     random : function(min, max){
       return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+
+    // this method strips the icon name from the class name and returns it.
+    // E.g: "icon-glass selected" will return "glass"
+    stripIconName : function(str){
+      if(!str) return '';
+      var classNames = str.split(/[ \t]+/);
+      var iconName = '';
+      _.each(classNames, function(name){
+        if(name.indexOf('icon-') === 0){
+          iconName = name.substr(name.indexOf('-') + 1);
+          return false;
+        }
+      });
+      return iconName;
     }
 
   });

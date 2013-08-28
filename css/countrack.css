@@ -17,8 +17,7 @@ a[class*='button-']{
   border-bottom: 3px solid #bdc3c7;
   border-radius: 2px;
   padding: .2em .5em;
-  color: #fff;
-  text-shadow:0 0 2px #888;
+  color: purple;
 
   -webkit-transition: text-shadow .3s;
   -moz-transition: text-shadow .3s;
@@ -27,14 +26,17 @@ a[class*='button-']{
   a.button-green{
     background-color: #1abc9c;
     border-color: #27ae60;
+    color: #fff;
   }
   a.button-purple{
     background-color: #9b59b6;
     border-color: #8e44ad;
+    color: #fff;
   }
   a.button-orange{
     background-color: #e67e22;
     border-color: #d35400;
+    color: #fff;
   }
   a[class*='button-']:hover{
     text-shadow:0 0 10px #fff;
@@ -50,6 +52,7 @@ em{
   color: #333;
   margin:0 auto;
   padding: .5em;
+  position: relative;
 }
 
   .app > header:first-child{
@@ -57,7 +60,7 @@ em{
     padding: .5em;
   }
   h1.brand{
-    font-size: 1em;
+    font-size: 1rem;
     margin: 0;
     text-transform: uppercase;
     color: purple;
@@ -67,9 +70,10 @@ em{
       opacity: .5;
       text-transform: lowercase;
     }
-  nav.main{
-    float: right;
-  }
+    .menu-icon{
+      float: right;
+      font-size: .8rem;
+    }
    
   .io{
     margin: 1em 0;
@@ -88,13 +92,13 @@ em{
       padding: .5em;
     }
     .io form input[type="text"]{
-      border: 1px solid #27ae60;
+      border: 1px solid purple;
       border-radius: 2px;
       padding: .2em;
-      width: 50%;
+      width: 65%;
     }
       .io form a[class*='button-']{
-        margin: 0 .1em;
+        margin-right: 1em;
       }
       .io form a[class*='button-']:last-child{
         margin-right: 0;
@@ -102,6 +106,26 @@ em{
       .io form label[for="nature"]{
         font-size: .8rem;
         margin: 0 .5em;
+      }
+      .io .icons{
+        font-size: 1.5em;
+        color: purple;
+        margin:1em 0;
+      }
+        .icons [class*='icon-']{
+          display: inline-block;
+          padding: .2em;
+          margin:.11em;
+          border-radius: 3px;
+          line-height: 1em;
+          cursor: pointer;
+          border:1px solid #fff;
+        }
+        .icons .selected, .icons [class*='icon-']:hover{
+          border-color: purple;
+        }
+      .io .actions{
+        margin-left: 1em;
       }
 
   .activity-list .activity{
@@ -115,7 +139,7 @@ em{
     font-size: 1.5em;
   }
     .activity .data p, .activity .count p{
-      margin: 0;
+      margin-top: 0;
       font-family: Tahoma;
     }
     .activity .data{
@@ -124,6 +148,12 @@ em{
       margin-right: .5em;
       color: #800080;
     }
+      .data.iconed p{
+        margin-left: 35px;
+      }
+      .data [class*='icon-']{
+        float: left;
+      }
     .activity .count{
       float: left;
       width: 25%;
@@ -223,10 +253,8 @@ em{
       }
 .intro{
   color: purple;
-  background: #fff url(../img/goldengate.png) no-repeat -150px -200px;
-  height: 340px;
   padding: 1em;
-  text-shadow:0 0 10px #fff;
+  text-align: center;
 }
   .intro h2{
   }
@@ -239,3 +267,51 @@ em{
     .highlights li{
       margin: 1em 0;
     }
+.menu{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.32rem;
+}
+  .menu .mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000; 
+    opacity: .9;
+    z-index: 900;
+  }
+  .menu ul{
+    z-index: 1000;
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 10% 0 0 0;
+  }
+    .menu li{
+      margin: 1em 0;
+    }
+      .menu li a{
+        display: block;
+      }
+      .menu li strong{
+        display: block;
+        font-weight: normal;
+      }
+      .menu li span{
+        font-size: .8rem;
+      }
+      .menu li.footer{
+        color: #fff;
+        font-size: 1rem;
+        text-shadow:0 0 2px #fff;
+        font-weight: normal;
+      }
+        .menu li.footer a{
+          display: inline;
+          color: #fff;
+        }

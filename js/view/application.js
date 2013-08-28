@@ -7,6 +7,7 @@ define([
   , 'model/record'
   , 'view/activity'
   , 'text!template/intro.html'
+  , 'text!template/menu.html'
   , 'model/sample'
   , 'constants'
 ], function(
@@ -18,6 +19,7 @@ define([
   , Record
   , ActivityView
   , IntroTemplate
+  , MenuTemplate
   , SampleActivities
   , CONST
 ){
@@ -33,14 +35,22 @@ define([
       'click #addActivity, #introAddActivity' : 'showActivityForm',
       'click #saveActivity' : 'saveActivityForm',
       'click #cancelActivity' : 'hideActivityForm',
-      'click #loadSample' : 'loadSample'
+      'click #loadSample' : 'loadSample',
+      'click .icons' : 'selectIcon',
+      'click .menu-icon' : 'showMenu',
+      'click #cancelMenu' : 'cancelMenu',
+      'click .mask' : 'cancelMenu',
+      'click #export' : 'exportData',
+      'click #import' : 'importData'
     },
 
     initialize : function(){
+
       this.$io = this.$el.find('.io'); 
       this.$activityList = this.$el.find('.activity-list');
       this.$info = this.$el.find('.info');
 
+      this.stopListening();
       this.listenTo(this.activities, 'add', this.addOneActivity);
       this.listenTo(this.activities, 'unpersist', this.removeActivity);
       
@@ -52,7 +62,6 @@ define([
       if(this.activities.length === 0){
         this.$activityList.html(IntroTemplate);
       }
-
     },
 
 
@@ -73,9 +82,8 @@ define([
       }, this);
     },
 
-    /* this method loads the activity data from localstorage. 
-      If local storage is empty, then it returns an empty Activitis collection.
-    */
+    // this method loads the activity data from localstorage. 
+    // If local storage is empty, then it returns an empty Activitis collection.
     loadActivities : function(){
       this.activities.reset();
       for(key in localStorage){
@@ -128,15 +136,17 @@ define([
       this.$io.removeClass('action-mode').addClass('form-mode').find('[type="text"]').focus();
     },
 
-    /* this method saves the form data to model/storage. */
+     // this method saves the form data to model/storage. 
     saveActivityForm : function(){
       var name = this.$io.find('[name="activityName"]').val();
       if($.trim(name) !== ''){
         var nature = this.$io.find('[name="nature"]').is(':checked') ? CONST.GOOD : CONST.BAD;
-        this.$io.find('[name="activityName"]').val('');
+        var icon = _.stripIconName(this.$io.find('.icons .selected').attr('class'));
+        console.log(icon);
         var activity = new Activity({
           name : name,
-          nature : nature
+          nature : nature,
+          icon : icon
         });
         this.activities.add(activity);
         activity.persist();
@@ -144,12 +154,60 @@ define([
       this.hideActivityForm();
     },
 
-    /* this method toggles to action mode.*/
+    // this method resets the activity form to their initial value.
+    resetActivityForm : function(){
+      this.$io.find('[name="activityName"]').val('');
+      this.$io.find('[name="nature"]').prop('checked', true);
+      this.$io.find('[class*="icon-"].selected').removeClass('selected');
+    },
+
+     // this method toggles to action mode.
     hideActivityForm : function(){
       if(this.activities.length === 0){
         this.$activityList.html(IntroTemplate);
       }
       this.$io.removeClass('form-mode').addClass('action-mode');
+      this.resetActivityForm();
+    },
+
+    // select an icon.
+    selectIcon : function(evt){
+      var iconElem = $(evt.target);
+      if(iconElem.prop('tagName') === 'I'){
+        this.$io.find('[class*="icon-"].selected').removeClass('selected');
+        iconElem.addClass('selected');
+      }
+    },
+
+    // display menu
+    showMenu : function(){
+      this.$el.append(MenuTemplate);
+      this.$el.find('.menu').css({
+        'height' : this.$el.css('height')
+      });
+    },
+
+    // close menu
+    cancelMenu : function(evt){
+      evt.stopImmediatePropagation();
+      this.$el.find('.menu').remove();
+    },
+
+    // encodes entire data to base64 and creates a URI component so that it
+    // can be saved as a file.
+    exportData : function(){
+      if(this.activities.length === 0){
+        alert('You have not created any activities to export.');
+        return;
+      }
+      var uriContent = "data:text/plain;base64," + btoa(JSON.stringify(this.activities));
+      window.open(uriContent, 'Save your Data');
+    },
+
+    // imports a data from a base64 encoded string and creates activities 
+    // from that.
+    importData : function(){
+      alert('This function will be build in the upcoming releases.');
     }
 
   });
