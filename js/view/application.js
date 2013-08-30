@@ -68,13 +68,10 @@ define([
     // this method writes sample activities to local storage.
     writeSampleDate : function(){
       _.each(SampleActivities, function(sample){
-        var activity = new Activity({
-          name : sample.name,
-          nature : sample.nature
-        });
-        for(var j=1; j <=20; j++){
+        var activity = new Activity(sample);
+        for(var j=1; j <=10; j++){
           var record = new Record();
-          record.set('date', _.subtractDays(new Date(), _.random(1,25)));
+          record.set('date', _.subtractDays(new Date(), _.random(1,20)));
           record.set('count', _.random(0,10));
           activity.get('records').add(record);
         }

@@ -2,7 +2,8 @@ define(['constants'], function(CONST){
   return [
     {
       name : 'Drink water',
-      nature : CONST.GOOD
+      nature : CONST.GOOD,
+      icon : 'glass'
     },
     {
       name : 'Workout',
@@ -14,11 +15,13 @@ define(['constants'], function(CONST){
     },
     {
       name : 'Eat out',
-      nature : CONST.BAD
+      nature : CONST.BAD,
+      icon : 'food'
     },
     {
       name : 'Read a book',
-      nature : CONST.GOOD
+      nature : CONST.GOOD,
+      icon : 'book'
     }
   ];
 });
