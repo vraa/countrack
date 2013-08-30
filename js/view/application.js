@@ -139,7 +139,6 @@ define([
       if($.trim(name) !== ''){
         var nature = this.$io.find('[name="nature"]').is(':checked') ? CONST.GOOD : CONST.BAD;
         var icon = _.stripIconName(this.$io.find('.icons .selected').attr('class'));
-        console.log(icon);
         var activity = new Activity({
           name : name,
           nature : nature,
