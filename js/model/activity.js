@@ -64,8 +64,7 @@ define([
 
     plotPoints : function(){
       var records = this.get('records');
-      var endDate  = new Date();
-      var startDate = _.subtractDays(endDate, CONST.MONTH);
+      var startDate  = new Date();
 
       var mapped = records.map(function(record){
         var date = new Date(Date.parse(record.get('date')));
@@ -81,8 +80,8 @@ define([
       }, {});
 
       var plotPoints = [];
-      for(var idx =  1 ; idx <= CONST.MONTH ; idx += 1){
-        var pointDate = _.stripTime(_.addDays(startDate, idx));
+      for(var idx =  0 ; idx < CONST.MONTH ; idx += 1){
+        var pointDate = _.stripTime(_.subtractDays(startDate, idx));
         plotPoints.push( {
           date : pointDate,
           count : reduced[pointDate] || 0,
