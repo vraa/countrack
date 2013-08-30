@@ -211,7 +211,6 @@ em{
       clear: both;
       font-size: .21rem;
       text-align: center;
-      opacity: .8;
     }
     .graph .cell{
       display: inline-block;
