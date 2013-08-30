@@ -1,0 +1,17 @@
+<%
+  if(plotPoints.length > 0){
+%>
+    <div class='graph day'>
+      <label>today's activities [ <%= _.stripTime(new Date()) %> ]</label>
+    <%
+      _.each(plotPoints, function(plotPoint){
+        console.log(plotPoint);
+    %>
+      <span data-date='<%= plotPoint.date %>' data-name='<%= plotPoint.name %>' class='cell <%= plotPoint.cssClass %> <%= plotPoint.nature %>'/>
+    <%
+        });
+    %>
+    </div>
+<%
+  }
+%>

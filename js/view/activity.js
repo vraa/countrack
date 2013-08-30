@@ -55,7 +55,6 @@ define([
       var record = new Record();
       this.model.get('records').add(record);
       this.model.set('updated', new Date());
-      this.model.trigger('change');
     },
 
     // Decrement the very recent activity count by 1.

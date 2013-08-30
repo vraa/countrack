@@ -68,6 +68,21 @@ require(['underscore'], function(_){
         }
       });
       return iconName;
+    },
+
+    // determines the weight of the cell based on given count.
+    calculateCellWeight : function(count){
+      var weight = 'empty';
+      if(count == 1){
+        weight = 'low';
+      }else if (count == 2 || count == 3){ 
+        weight = 'medium';
+      }else if (count >= 4 && count <= 6){
+        weight = 'high';
+      }else if(count >= 7){
+        weight = 'insane';
+      }
+      return weight;
     }
 
   });

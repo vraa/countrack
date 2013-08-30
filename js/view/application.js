@@ -6,6 +6,7 @@ define([
   , 'model/activity'
   , 'model/record'
   , 'view/activity'
+  , 'view/day-summary'
   , 'text!template/intro.html'
   , 'text!template/menu.html'
   , 'model/sample'
@@ -18,6 +19,7 @@ define([
   , Activity
   , Record
   , ActivityView
+  , DaySummaryView
   , IntroTemplate
   , MenuTemplate
   , SampleActivities
@@ -49,15 +51,23 @@ define([
       this.$io = this.$el.find('.io'); 
       this.$activityList = this.$el.find('.activity-list');
       this.$info = this.$el.find('.info');
+      this.$daySummary = this.$el.find('.day-summary');
 
-      this.stopListening();
       this.listenTo(this.activities, 'add', this.addOneActivity);
       this.listenTo(this.activities, 'unpersist', this.removeActivity);
       
+      this.render();
+    },
+
+    render : function(){
       this.$info.html('Loading ...');
       this.loadActivities();
       this.addAllActivity();
       this.$info.html('');
+
+      this.$daySummary.html(new DaySummaryView({
+        collection : this.activities
+      }).render().$el);
       
       if(this.activities.length === 0){
         this.$activityList.html(IntroTemplate);
@@ -99,7 +109,7 @@ define([
     loadSample : function(){
       this.$activityList.empty();
       this.writeSampleDate();
-      this.initialize();
+      this.render();
     },
 
     removeActivity : function(activity){

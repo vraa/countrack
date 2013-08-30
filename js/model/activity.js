@@ -85,24 +85,10 @@ define([
         plotPoints.push( {
           date : pointDate,
           count : reduced[pointDate] || 0,
-          cssClass : this.determinePlotPointClass(reduced[pointDate] || 0)
+          cssClass : _.calculateCellWeight(reduced[pointDate] || 0)
         } );
       }      
       return plotPoints;
-    },
-
-    determinePlotPointClass : function(count){
-      var pointClass = 'empty';
-      if(count == 1){
-        pointClass = 'low';
-      }else if (count == 2 || count == 3){ 
-        pointClass = 'medium';
-      }else if (count >= 4 && count <= 6){
-        pointClass = 'high';
-      }else if(count >= 7){
-        pointClass = 'insane';
-      }
-      return pointClass;
     }
 
   });

@@ -226,30 +226,41 @@ em{
       background-color: #fafafa;
       opacity: .8;
     }
-      .good .cell.low{
+      .good .cell.low, .good.cell.low{
         background-color: #d6e685;
       }
-      .good .cell.medium{
+      .good .cell.medium, .good.cell.medium{
         background-color: #8cc665;
       }
-      .good .cell.high{
+      .good .cell.high, .good.cell.high{
         background-color: #44a340;
       }
-      .good .cell.insane{
+      .good .cell.insane, .good.cell.insane{
         background-color: #1e6823;
       }
-      .bad .cell.low{
+      .bad .cell.low, .bad.cell.low{
         background-color: #EDB5B0;
       }
-      .bad .cell.medium{
+      .bad .cell.medium, .bad.cell.medium{
         background-color: #DF7B71;
       }
-      .bad .cell.high{
+      .bad .cell.high, .bad.cell.high{
         background-color: #DA685C;
       }
-      .bad .cell.insane{
+      .bad .cell.insane, .bad.cell.insane{
         background-color: #C0382B;
       }
+  .day.graph{
+    border: 1px solid #fafafa;
+    padding: .5em;
+    border-radius: 2px;
+  }
+    .day.graph label{
+      display: block;
+      color: #aaa;
+      text-transform: uppercase;
+      font-size: .6rem;
+    }
 .intro{
   color: purple;
   padding: 1em;
