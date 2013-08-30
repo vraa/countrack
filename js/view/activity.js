@@ -26,6 +26,7 @@ define([
     events : {
       'click' : 'expandActivity',
       'click .increment' : 'increment',
+      'click .decrement' : 'decrement',
       'click .delete' : 'delete',
       'click .edit' : 'edit'
     },
@@ -48,11 +49,28 @@ define([
       this.$el.toggleClass('expanded');
     },
 
+    // increment the activity count by 1
     increment : function(evt){
       evt.stopImmediatePropagation();
       var record = new Record();
       this.model.get('records').add(record);
       this.model.set('updated', new Date());
+      this.model.trigger('change');
+    },
+
+    // Decrement the very recent activity count by 1.
+    // If the count has become zero, then remove the record.
+    decrement : function(evt){
+      evt.stopImmediatePropagation();
+      var records = this.model.get('records');
+      if(records.length === 0) return;
+      var recentRecord = records.max(function(record){
+        return record.get('date').getTime();
+      });
+      recentRecord.set('count', recentRecord.get('count') - 1);
+      if(recentRecord.get('count') <= 0){
+        records.remove(recentRecord);
+      }
       this.model.trigger('change');
     },
 
