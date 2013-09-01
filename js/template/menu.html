@@ -1,8 +1,20 @@
-<div class="menu">
+<div class="menu container">
   <div class='mask'></div>
   <ul>
+    <li class="firebase-config">
+      <p class="note">If you want to backup your data to cloud, <a href="http://countrack.me/help/firebase.html">setup Firebase</a>. Unless you do this, your data never leaves your browser. Please note, you might <strong>loose your local data</strong> when you clear browser cache. So, it is recommended to backup your data.</p>
+      <p><label>Firebase URL (<a href="http://countrack.me/help/firebase.html">How to get one?</a>) </label></p>
+      <p><input type="text" name="firebaseUrl" placeholder="https://username.firebaseio.com/" /> <a href="javascript:void(0);" class="button-purple" id="saveFirebaseUrl">&#10004; Save</a></p>
+    </li>
     <li>
-      <a class='button-purple' href="javascript:void(0);" id="export"><strong><i class='icon-upload'></i> Export data</strong> <span>Save as a file</span></a>
+      <a class='button-purple' href="javascript:void(0);" id="export">
+        <i class='icon-up-outline'></i><i class='icon-cloud'></i> <strong>Export to Cloud</strong>
+        <span>Backup your data to Firebase</span>
+      </a>
+    </li>
+    <li>
+      <a class='button-purple' href="javascript:void(0);" id="import"><i class='icon-cloud'></i><i class='icon-down-outline'></i> <strong>Import from Cloud</strong>
+        <span>This will 'replace' your local data.</span></a>
     </li>
     <!--
     <li>
@@ -13,7 +25,7 @@
       <a class='button-grey' href="javascript:void(0);" id="cancelMenu"><strong>Cancel</strong></a>
     </li>
     <li class="footer">
-      Developed by <a href="http://veerasundar.com">Veera</a> | <a href="https://github.com/vraa/countrack">Contribute</a>.
+      Developed by <a href="http://veerasundar.com">Veera</a> | <a href="https://github.com/vraa/countrack">Source</a>.
     </li>
   </ul>
 </div>

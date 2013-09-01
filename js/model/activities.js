@@ -34,7 +34,6 @@ define([
           return (_.stripTime(record.get('date')) === today);
         });
         _.each(filtered, function(record){
-          console.log(record.get('count'));
           record.set({
             name : name,
             nature : nature,

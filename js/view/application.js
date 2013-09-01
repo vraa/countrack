@@ -43,7 +43,8 @@ define([
       'click #cancelMenu' : 'cancelMenu',
       'click .mask' : 'cancelMenu',
       'click #export' : 'exportData',
-      'click #import' : 'importData'
+      'click #import' : 'importData',
+      'click #saveFirebaseUrl' : 'saveFirebaseUrl'
     },
 
     initialize : function(){
@@ -61,6 +62,7 @@ define([
 
     render : function(){
       this.$info.html('Loading ...');
+      this.$activityList.empty();
       this.loadActivities();
       this.addAllActivity();
       this.$info.html('');
@@ -71,6 +73,8 @@ define([
       
       if(this.activities.length === 0){
         this.$activityList.html(IntroTemplate);
+      }else{
+        this.$activityList.find('.intro').remove();
       }
     },
 
@@ -188,32 +192,81 @@ define([
     // display menu
     showMenu : function(){
       this.$el.append(MenuTemplate);
-      this.$el.find('.menu').css({
-        'height' : this.$el.css('height')
-      });
+      this.$el.find('[name="firebaseUrl"]').val(localStorage.getItem(CONST.APP_PREFIX + CONST.FIREBASE_URL));
     },
 
     // close menu
     cancelMenu : function(evt){
-      evt.stopImmediatePropagation();
+      if(evt) evt.stopImmediatePropagation();
       this.$el.find('.menu').remove();
     },
 
     // encodes entire data to base64 and creates a URI component so that it
     // can be saved as a file.
-    exportData : function(){
+    exportData : function(evt){
+      if(evt) evt.stopImmediatePropagation();
       if(this.activities.length === 0){
         alert('You have not created any activities to export.');
         return;
       }
-      var uriContent = "data:text/plain;base64," + btoa(JSON.stringify(this.activities));
-      window.open(uriContent, 'Save your Data');
+
+      var firebaseUrl = this.checkFirebaseUrl();
+      if(Firebase && firebaseUrl){
+        this.$el.find('#export').addClass('ajax-progress');
+        var firebase = new Firebase(firebaseUrl);
+        firebase.set({
+          'app' : 'countrack',
+          'version' : '1.0.0',
+          'developer' : 'Veera',
+          'url' : 'http://countrack.me',
+          'activities' : JSON.stringify(this.activities)
+        }, function(){
+          $('.ajax-progress').removeClass('ajax-progress');
+        });
+      }
     },
 
     // imports a data from a base64 encoded string and creates activities 
     // from that.
-    importData : function(){
-      alert('This function will be build in the upcoming releases.');
+    importData : function(evt){
+      if(evt) evt.stopImmediatePropagation();
+      var firebaseUrl = this.checkFirebaseUrl();
+      var self = this;
+      if(Firebase && firebaseUrl){
+        this.$el.find('#import').addClass('ajax-progress');
+        var firebase = new Firebase(firebaseUrl);
+        firebase.on('value', function(data){
+          var activitiesObj = JSON.parse(data.val().activities);
+          _.each(activitiesObj, function(activityObj){
+            window.localStorage.setItem(activityObj.id, JSON.stringify(activityObj));
+          });
+          $('.ajax-progress').removeClass('ajax-progress');
+          self.cancelMenu();
+          self.render();
+        });
+      }
+    },
+
+    // this method tries to read firebase URL from localstorage.
+    // If no URL found, then it alerts user to setup one.
+    checkFirebaseUrl : function(){
+      var val = window.localStorage.getItem(CONST.APP_PREFIX + CONST.FIREBASE_URL);
+      if(val === undefined || $.trim(val) === ''){
+        alert('Please setup a Firebase URL before Import/Export. \n\n http://countrack.me/help/firebase.html');
+        return undefined;
+      }
+      return val;
+    },
+
+    // this method writes the user given firebase URL to localstorage.
+    saveFirebaseUrl : function(){
+      var url = this.$el.find('[name="firebaseUrl"]').val();
+      if($.trim(url) != ''){
+        window.localStorage.setItem(CONST.APP_PREFIX + CONST.FIREBASE_URL, url);
+        this.$el.find('#saveFirebaseUrl').html('Saved');
+      }else{
+        alert('Please enter Firebase URL');
+      }
     }
 
   });

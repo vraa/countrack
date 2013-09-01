@@ -12,7 +12,6 @@
 
 a[class*='button-']{
   text-decoration: none;
-  font-weight: bold;
   background-color:#ecf0f1; 
   border-bottom: 3px solid #bdc3c7;
   border-radius: 2px;
@@ -79,6 +78,7 @@ em{
     margin: 1em 0;
   }
     .io #addActivity{
+      font-size: 1rem;
     }
     .io.action-mode form{
       display: none;
@@ -325,3 +325,56 @@ em{
           display: inline;
           color: #fff;
         }
+  .menu .firebase-config{
+    display: block;
+    background-color: #fafafa;
+    padding: 1em;
+    text-align: left;
+    font-size: 1rem;
+  }
+    .menu .firebase-config [type='text']{
+      display: block;
+      width: 90%;
+      margin-bottom: .5em;
+    }
+    .menu li.firebase-config a{
+      display: inline-block;
+      font-size: .8em;
+    }
+    .firebase-config p{
+      padding: .1em 0;
+      margin: 0;
+    }
+    .firebase-config label, .firebase-config small.help{
+      display: block;
+    }
+    .firebase-config label span{
+      font-size: 1rem;
+    }
+    .firebase-config small.help{
+      color: #aaa;
+    }
+      .firebase-config small.help em{
+        color: #666;
+      }
+    .firebase-config p.note{
+      font-size: .8rem;
+      color: #999;
+      margin: .5em 0;
+      line-height: 1.1rem;
+    }
+      .firebase-config p.note a{
+        font-size: .8rem;
+      }
+      .firebase-config p.note strong{
+        background-color: #ffffaf;
+        font-weight: bold;
+        color: #666;
+        display: inline;
+      }
+
+  .menu .ajax-progress{
+    background: #9B59B6 url(../img/ajax-loader.gif) no-repeat center center;
+    color: #9B59B6;
+    text-shadow:none!important;
+  }
