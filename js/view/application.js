@@ -56,8 +56,13 @@ define([
 
       this.listenTo(this.activities, 'add', this.addOneActivity);
       this.listenTo(this.activities, 'unpersist', this.removeActivity);
-      
+
       this.render();
+
+      if(mixpanel){
+        mixpanel.track('app:load');
+      }
+
     },
 
     render : function(){
@@ -73,6 +78,9 @@ define([
       
       if(this.activities.length === 0){
         this.$activityList.html(IntroTemplate);
+        if(mixpanel){
+          mixpanel.track('app:intro');
+        }
       }else{
         this.$activityList.find('.intro').remove();
       }
@@ -111,6 +119,9 @@ define([
 
     // this method fills the app with sample activities.
     loadSample : function(){
+      if(mixpanel){
+        mixpanel.track('app:loadsample');
+      }
       this.$activityList.empty();
       this.writeSampleDate();
       this.render();
@@ -227,6 +238,9 @@ define([
           'activities' : JSON.stringify(this.activities)
         }, function(){
           $('.ajax-progress').removeClass('ajax-progress');
+          if(mixpanel){
+            mixpanel.track('app:export');
+          }
         });
       }
     },
@@ -246,6 +260,9 @@ define([
             window.localStorage.setItem(activityObj.id, JSON.stringify(activityObj));
           });
           $('.ajax-progress').removeClass('ajax-progress');
+          if(mixpanel){
+            mixpanel.track('app:import');
+          }
           self.cancelMenu();
           self.render();
         });
@@ -269,6 +286,9 @@ define([
       if($.trim(url) != ''){
         window.localStorage.setItem(CONST.APP_PREFIX + CONST.FIREBASE_URL, url);
         this.$el.find('#saveFirebaseUrl').html('Saved');
+        if(mixpanel){
+          mixpanel.track('app:savefirebaseurl');
+        }
       }else{
         alert('Please enter Firebase URL');
       }
