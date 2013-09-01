@@ -192,6 +192,11 @@ define([
     // display menu
     showMenu : function(){
       this.$el.append(MenuTemplate);
+      var viewPort = $(window).outerHeight();
+      var appHeight = $('.app').outerHeight();
+      this.$el.find('.menu').css({
+        height : (viewPort > appHeight) ? viewPort : appHeight
+      });
       this.$el.find('[name="firebaseUrl"]').val(localStorage.getItem(CONST.APP_PREFIX + CONST.FIREBASE_URL));
     },
 
