@@ -263,20 +263,38 @@ em{
     }
 .intro{
   color: purple;
-  padding: 1em;
   text-align: center;
 }
   .intro h2{
   }
   .intro .highlights{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    padding: .2em;
+    width: 100%;
+    margin: 2em 0 1em 0;
   }
-    .highlights li{
-      margin: 1em 0;
+    .highlights td{
+      background-color: #9B59B6;
+      color: #fff;
+      padding: .5rem;
     }
+    .highlights tr:first-child td:last-child, .highlights tr:last-child td:first-child{
+      background-color: #8E44AD;
+    }
+    .highlights a{
+      color: #fff;
+    }
+    .highlights td i{
+      font-size: 1.7rem;
+      text-shadow: 0 0 2px #ff0;
+    }
+  .intro footer{
+    color: #aaa;
+    font-size: .8rem;
+    text-align: left;
+  }
+    .intro footer a{
+      color: #888;
+    }
+    
 .menu{
   position: absolute;
   top: 0;
@@ -284,6 +302,7 @@ em{
   width: 100%;
   text-align: center;
   font-size: 1.32rem;
+  padding: 1em;
 }
   .menu .mask{
     position: absolute;
@@ -300,7 +319,6 @@ em{
     position: relative;
     list-style: none;
     padding: 0;
-    margin: 10% 0 0 0;
   }
     .menu li{
       margin: 1em 0;
