@@ -291,7 +291,7 @@ em{
       color: #fff;
       padding: .5rem;
     }
-    .highlights tr:first-child td:last-child, .highlights tr:last-child td:first-child{
+    .highlights tr:nth-child(odd) td:nth-child(even), .highlights tr:nth-child(even) td:nth-child(odd){
       background-color: #8E44AD;
     }
     .highlights a{
