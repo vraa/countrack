@@ -210,7 +210,7 @@ em{
     .activity .graph{
       clear: both;
       font-size: .21rem;
-      text-align: center;
+      text-align: left;
     }
     .graph .cell{
       display: inline-block;
