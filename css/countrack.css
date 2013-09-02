@@ -265,8 +265,23 @@ em{
   color: purple;
   text-align: center;
 }
-  .intro h2{
+  .intro h1{
+    font-size: 1.5rem;
+    font-weight: normal;
   }
+  .intro h2{
+    font-weight: normal;
+    font-size: 1.1rem;
+  }
+  .inro .steps{
+    font-size: .8rem;
+  }
+    .intro .steps em{
+      background-color: #000;
+      border-radius: 50%;
+      display: inline-block;
+      padding: .2rem .4rem;
+    }
   .intro .highlights{
     width: 100%;
     margin: 2em 0 1em 0;
