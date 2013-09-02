@@ -162,6 +162,7 @@ define([
     saveActivityForm : function(){
       var name = this.$io.find('[name="activityName"]').val();
       if($.trim(name) !== ''){
+        name = $('<div/>').text(name).html();
         var nature = this.$io.find('[name="nature"]').is(':checked') ? CONST.GOOD : CONST.BAD;
         var icon = _.stripIconName(this.$io.find('.icons .selected').attr('class'));
         var activity = new Activity({
