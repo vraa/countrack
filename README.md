@@ -1,7 +1,7 @@
 countrack
 =========
 
-A JavaScript application to track your activities anonymously. You can access it: [countrack.me](http://countrack.me).
+A JavaScript application to track your activities anonymously. You can access it: [countrack.me](http://veerasundar.com/app/countrack/).
 
 Here's the application screenshot.
 
